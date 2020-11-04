@@ -150,7 +150,7 @@ class RepetitionCode():
 
             self.circuit[log].add_register(self.link_bits[-1])
             
-            if self.basis == 'H':
+            if self.basis == 'X':
                 for j in range(self.d):
                     self.circuit[log].h(self.code_qubit[j])
 
@@ -167,7 +167,7 @@ class RepetitionCode():
                 if reset:
                     self.circuit[log].reset(self.link_qubit[j])
                     
-            if self.basis == 'H':
+            if self.basis == 'X':
                 for j in range(self.d):
                     self.circuit[log].h(self.code_qubit[j])
 
@@ -182,7 +182,7 @@ class RepetitionCode():
         as well as allowing for a measurement of the syndrome to be inferred.
         """
         for log in ['0', '1']:
-            if self.basis == 'H':
+            if self.basis == 'X':
                 for j in range(self.d):
                     self.circuit[log].h(self.code_qubit[j])
             self.circuit[log].add_register(self.code_bit)
@@ -258,4 +258,4 @@ class RepetitionCode():
                 self.circuit[log].h(self.code_qubit[j])
             if barrier:
                 self.circuit[log].barrier()
-        self.basis = 'H' if self.basis == 'Z' else 'Z'
+        self.basis = 'X' if self.basis == 'Z' else 'Z'
